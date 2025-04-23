@@ -1,0 +1,120 @@
+<% layout("/layouts/boilerplate") -%>
+      <div class="row">
+        <div class="col-8 offset-3">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    h3 {
+      text-align: center;
+      margin-bottom: 2rem;
+      color: #343a40;
+    }
+
+    .row {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .card {
+      width: 50%;
+      max-width: 800px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-img-top {
+      width: 100%;
+      height: 20rem;
+      object-fit: cover;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .card-body {
+      padding: 1.5rem;
+    }
+
+    .card-title {
+      font-size: 1.75rem;
+      font-weight: bold;
+      color: #212529;
+      margin-bottom: 1rem;
+    }
+
+    .card-text {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #495057;
+    }
+
+    .btns {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.6rem 1.4rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn-dark {
+      background-color: #343a40;
+      color: white;
+      border: none;
+    }
+
+    .btn-dark:hover {
+      background-color: #23272b;
+    }
+
+    .edit-btn {
+      text-align: center;
+    }
+
+    form {
+      display: inline;
+    }
+  </style>
+       </div>
+       <div class="card col">
+        <img src="<%= listing.companyImageUrl || 'https://via.placeholder.com/300x200?text=Company+Logo' %>" class="card-img-top" alt="company_logo" style="height: 20rem;" />
+        <div class="card-body">
+          <h5 class="card-title"><%= listing.title %></h5>
+          <p class="card-text">
+            <strong>Company:</strong> <%= listing.company %> <br />
+            <strong>Location:</strong> <%= listing.location %> (<%= listing.country %>)<br />
+            <strong>Employment:</strong> <%= listing.employmentType %><br />
+            <strong>Experience:</strong> <%= listing.experience %> (<%= listing.minExp %>–<%= listing.maxExp %> yrs)<br />
+            <strong>Seniority:</strong> <%= listing.seniorityLevel || 'Not specified' %><br />
+            <strong>Company Type:</strong> <%= listing.companyType || 'N/A' %><br />
+            <strong>Source:</strong> <%= listing.source %><br />
+            <strong>Posted:</strong> <%= listing.postedDateTime.toDateString() %>
+          </p>
+          <a href="<%= listing.jobLink %>" class="btn btn-primary" target="_blank">Apply Now</a>
+        </div>
+      </div>
+      <br />
+      </div>
+      <div class="btns"> -->
+        <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark offset-3 edit-btn">Edit</a>
+      <form method="POST" action="/listings/<%=listing._id%>?_method=DELETE">
+          <button class="btn btn-dark offset-5">Delete</button>
+      </form>
+    </div>
+  </div>
+
